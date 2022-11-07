@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55a0cfdb9ba44d4d81b94e3e0189249, type: 3}
+  m_Name: 3_Question
+  m_EditorClassIdentifier: 
+  questionId: 3
+  question: Name a type of transport
+  answers:
+  - answer: Cars
+    answerId: 0
+    popularity: 32
+    similarAnswers: []
+  - answer: Plane
+    answerId: 1
+    popularity: 21
+    similarAnswers: []
+  - answer: Bus
+    answerId: 2
+    popularity: 20
+    similarAnswers: []
+  - answer: Bike
+    answerId: 3
+    popularity: 10
+    similarAnswers: []
+  - answer: Train
+    answerId: 4
+    popularity: 9
+    similarAnswers: []
+  - answer: Walk
+    answerId: 5
+    popularity: 8
+    similarAnswers: []
+  respondentLeftForPopularity: 0

@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55a0cfdb9ba44d4d81b94e3e0189249, type: 3}
+  m_Name: 4_Question
+  m_EditorClassIdentifier: 
+  questionId: 4
+  question: Name a sportswear brand
+  answers:
+  - answer: Nike
+    answerId: 0
+    popularity: 39
+    similarAnswers: []
+  - answer: Adidas
+    answerId: 1
+    popularity: 21
+    similarAnswers: []
+  - answer: Jordan
+    answerId: 2
+    popularity: 14
+    similarAnswers: []
+  - answer: Puma
+    answerId: 3
+    popularity: 12
+    similarAnswers: []
+  - answer: New Balance
+    answerId: 4
+    popularity: 9
+    similarAnswers: []
+  - answer: Rebook
+    answerId: 5
+    popularity: 5
+    similarAnswers: []
+  respondentLeftForPopularity: 0
