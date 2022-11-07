@@ -17,28 +17,28 @@ MonoBehaviour:
   answers:
   - answer: Orange juice
     answerId: 0
-    popularity: 28
+    poll: 28
     similarAnswers: []
   - answer: Coffee
     answerId: 1
-    popularity: 19
+    poll: 19
     similarAnswers: []
   - answer: Milk
     answerId: 2
-    popularity: 18
+    poll: 18
     similarAnswers:
     - Basket
   - answer: Water
     answerId: 3
-    popularity: 15
+    poll: 15
     similarAnswers: []
   - answer: Apple Juice
     answerId: 4
-    popularity: 14
+    poll: 14
     similarAnswers: []
   - answer: Tea
     answerId: 5
-    popularity: 6
+    poll: 6
     similarAnswers:
     - Ice Hockey
   respondentLeftForPopularity: 0

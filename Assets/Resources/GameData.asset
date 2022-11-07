@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d877fc954d0204699fd4179cff38cd, type: 3}
+  m_Name: GameData
+  m_EditorClassIdentifier: 
+  respondenCount: 100
+  respondenCountInDisplay: 50
+  timePerRound: 60
+  roundPerGame: 3
+  playerColor: {r: 0, g: 0.7568628, b: 1, a: 1}
+  enemyColor: {r: 1, g: 0.427451, b: 0, a: 1}
+  respondentPrefabs: []
+  questionDatas:
+  - {fileID: 11400000, guid: 1eb01a45b8d89d94891b61bb484675ad, type: 2}
+  - {fileID: 11400000, guid: fe7bdcda01afe5e46b4cc93d29240c18, type: 2}
+  - {fileID: 11400000, guid: 513a89593745835418f3ab0d057d0650, type: 2}
+  - {fileID: 11400000, guid: 89fa95ea8857da343b411d37d2177043, type: 2}
+  - {fileID: 11400000, guid: 47fb0da6d1cbdb443a268440f8c3a642, type: 2}
+  - {fileID: 11400000, guid: 437e0935ffd82774896c507b65811be5, type: 2}

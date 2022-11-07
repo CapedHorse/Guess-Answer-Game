@@ -16,23 +16,29 @@ MonoBehaviour:
   question: Name a sport
   answers:
   - answer: Football
-    popularity: 27
+    answerId: 0
+    poll: 27
     similarAnswers: []
   - answer: Soccer
-    popularity: 25
+    answerId: 1
+    poll: 25
     similarAnswers: []
   - answer: Basketball
-    popularity: 20
+    answerId: 2
+    poll: 20
     similarAnswers:
     - Basket
   - answer: Tennis
-    popularity: 12
+    answerId: 3
+    poll: 12
     similarAnswers: []
   - answer: Rugby
-    popularity: 10
+    answerId: 4
+    poll: 10
     similarAnswers: []
   - answer: Hockey
-    popularity: 6
+    answerId: 5
+    poll: 6
     similarAnswers:
     - Ice Hockey
-  respondentLeft: 0
+  respondentLeftForPopularity: 0

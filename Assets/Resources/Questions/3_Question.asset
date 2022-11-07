@@ -17,26 +17,26 @@ MonoBehaviour:
   answers:
   - answer: Cars
     answerId: 0
-    popularity: 32
+    poll: 32
     similarAnswers: []
   - answer: Plane
     answerId: 1
-    popularity: 21
+    poll: 21
     similarAnswers: []
   - answer: Bus
     answerId: 2
-    popularity: 20
+    poll: 20
     similarAnswers: []
   - answer: Bike
     answerId: 3
-    popularity: 10
+    poll: 10
     similarAnswers: []
   - answer: Train
     answerId: 4
-    popularity: 9
+    poll: 9
     similarAnswers: []
   - answer: Walk
     answerId: 5
-    popularity: 8
+    poll: 8
     similarAnswers: []
   respondentLeftForPopularity: 0

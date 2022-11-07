@@ -14,14 +14,14 @@ namespace PikoruaTest
 
             var questionDataSO = (QuestionData)target;
             
-            var generalSettings = EditorGUIUtility.Load("Assets/Resources/GeneralSettings.asset") as GeneralProperties;
+            var generalSettings = EditorGUIUtility.Load("Assets/Resources/GeneralSettings.asset") as GameData;
             var maxRespondent = generalSettings.respondenCount;
 
             //Checking total popularity gained, also set each answer's id
             int totalPopularity = 0;
             foreach (var item in questionDataSO.answers)
             {
-                totalPopularity += item.popularity;
+                totalPopularity += item.poll;
                 item.answerId = questionDataSO.answers.IndexOf(item);
             }
 
@@ -35,10 +35,10 @@ namespace PikoruaTest
                 int totalPopularityBeforeLast = 0;
                 for (int i = 0; i < questionDataSO.answers.Count -1; i++)
                 {
-                    totalPopularityBeforeLast += questionDataSO.answers[i].popularity;
+                    totalPopularityBeforeLast += questionDataSO.answers[i].poll;
                 }
 
-                questionDataSO.answers[questionDataSO.answers.Count - 1].popularity = Mathf.Clamp(maxRespondent - totalPopularityBeforeLast, 0, maxRespondent);
+                questionDataSO.answers[questionDataSO.answers.Count - 1].poll = Mathf.Clamp(maxRespondent - totalPopularityBeforeLast, 0, maxRespondent);
                 questionDataSO.respondentLeftForPopularity = 0;
 
                 Debug.LogWarning("Popularity count exceeding maximum respondent.");

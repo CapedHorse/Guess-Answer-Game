@@ -20,8 +20,14 @@ namespace PikoruaTest
         {
             public string answer;
             public int answerId;
-            public int popularity;
+            public int poll;
             public List<string> similarAnswers;
+        }
+
+        public bool CheckIfAnswerCorrect(string _answer, out int _answerId)
+        {
+            _answerId = 0;
+            return true;
         }
     }
 }

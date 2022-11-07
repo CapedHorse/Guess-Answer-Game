@@ -17,26 +17,26 @@ MonoBehaviour:
   answers:
   - answer: Nike
     answerId: 0
-    popularity: 39
+    poll: 39
     similarAnswers: []
   - answer: Adidas
     answerId: 1
-    popularity: 21
+    poll: 21
     similarAnswers: []
   - answer: Jordan
     answerId: 2
-    popularity: 14
+    poll: 14
     similarAnswers: []
   - answer: Puma
     answerId: 3
-    popularity: 12
+    poll: 12
     similarAnswers: []
   - answer: New Balance
     answerId: 4
-    popularity: 9
+    poll: 9
     similarAnswers: []
   - answer: Rebook
     answerId: 5
-    popularity: 5
+    poll: 5
     similarAnswers: []
   respondentLeftForPopularity: 0

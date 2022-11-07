@@ -8,7 +8,7 @@ namespace PikoruaTest
     {
         public static MainManager instance;
 
-        public GeneralProperties generalProperties;
+        public GameData generalProperties;
         private void Awake()
         {
             if (instance == null)

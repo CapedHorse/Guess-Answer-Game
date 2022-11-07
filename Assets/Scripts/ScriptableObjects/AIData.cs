@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIData : MonoBehaviour
+namespace PikoruaTest
 {
-    // Start is called before the first frame update
-    void Start()
+    public class AIData : ScriptableObject
     {
-        
-    }
+        public enum AIDifficulty { Easy, Medium, Hard}
+        public AIDifficulty difficulty;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public float answeringInterval;
+        public float chanceToAnswerTheHighestPoll;
     }
 }
+
+
