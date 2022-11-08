@@ -9,16 +9,26 @@ namespace PikoruaTest
         public enum ControlType { Human, AI }
         public ControlType type;
         public Color playerColor;
-        // Start is called before the first frame update
+
         void Start()
         {
 
         }
 
-        // Update is called once per frame
+
         void Update()
         {
+            switch (type)
+            {
+                case ControlType.Human:
 
+                    break;
+                case ControlType.AI:
+
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

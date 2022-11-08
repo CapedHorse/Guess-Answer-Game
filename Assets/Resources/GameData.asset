@@ -18,7 +18,12 @@ MonoBehaviour:
   roundPerGame: 3
   playerColor: {r: 0, g: 0.7568628, b: 1, a: 1}
   enemyColor: {r: 1, g: 0.427451, b: 0, a: 1}
-  respondentPrefabs: []
+  respondentPrefabs:
+  - {fileID: 7143455477481005277, guid: 4af3f792e06356643ba11ea6ef496c33, type: 3}
+  - {fileID: 3749227803782360138, guid: 59f4de58f07b5fd4996bdcd98bb4d2b8, type: 3}
+  - {fileID: 3749227803782360138, guid: 7d9dcc10e30115441b0fbe1c31653857, type: 3}
+  - {fileID: 3749227803782360138, guid: 917d240bc0717c44c9b98e5fc2c96a94, type: 3}
+  - {fileID: 3749227803782360138, guid: 6efe1d9d22d1c6348921d186e5a1961e, type: 3}
   questionDatas:
   - {fileID: 11400000, guid: 1eb01a45b8d89d94891b61bb484675ad, type: 2}
   - {fileID: 11400000, guid: fe7bdcda01afe5e46b4cc93d29240c18, type: 2}
@@ -26,3 +31,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89fa95ea8857da343b411d37d2177043, type: 2}
   - {fileID: 11400000, guid: 47fb0da6d1cbdb443a268440f8c3a642, type: 2}
   - {fileID: 11400000, guid: 437e0935ffd82774896c507b65811be5, type: 2}
+  aiDatas:
+  - {fileID: 11400000, guid: 2d9f8b79df4af834c9c619fed1928caf, type: 2}
+  - {fileID: 11400000, guid: 8a249f7b4e98e8b4bba8918dddb19c9a, type: 2}
+  - {fileID: 11400000, guid: d4fb5203c2292d64a9cf281aface5e90, type: 2}

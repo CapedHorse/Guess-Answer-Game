@@ -12,16 +12,32 @@ namespace PikoruaTest
         {
             base.OnInspectorGUI();
 
-            var questionDatabase = (GameData)target;
-            questionDatabase.questionDatas.Clear();
+            var gameData = (GameData)target;
+            gameData.questionDatas.Clear();
+            gameData.aiDatas.Clear();
+            //gameData.respondentPrefabs.Clear();
 
             Debug.Log("Questions count" + Resources.LoadAll("Questions", typeof(QuestionData)).Length); 
             foreach (var item in Resources.LoadAll("Questions", typeof(QuestionData)))
             {
                 Debug.Log("Question " + item.name);
-                questionDatabase.questionDatas.Add((QuestionData)item);
+                gameData.questionDatas.Add((QuestionData)item);
             }
+
+            Debug.Log("AI Data count" + Resources.LoadAll("AIData", typeof(AIData)).Length);
+            foreach (var item in Resources.LoadAll("AIData", typeof(AIData)))
+            {
+                Debug.Log("AI Data " + item.name);
+                gameData.aiDatas.Add((AIData)item);
+            }
+
+            //Debug.Log("Respondent count" + AssetDatabase.LoadAllAssetsAtPath.LoadPrefabContents("Assets/Prefabs/Respondents").Length);
+            //foreach (var item in PrefabUtility.LoadPrefabContents("Assets/Prefabs/Respondents"))
+            //{
+            //    gameData.respondentPrefabs.Add((Respondent)item);
+            //}
         }
     }
 }
+
 
