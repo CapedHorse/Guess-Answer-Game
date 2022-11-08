@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace PikoruaTest
@@ -8,13 +9,24 @@ namespace PikoruaTest
     {
         public enum ControlType { Human, AI }
         public ControlType type;
-        public Color playerColor;
+        public Animator participantAnimator;
+        public Color participantColor;
+        public Grid respondentArea;
+        public GameObject answerPopUp;
+        public TextMeshProUGUI answerTextMesh;
+        public GameObject correctAnswerSign, wrongAnswerSign;
+        
 
         void Start()
         {
-
+            respondentArea.Init();
         }
 
+        //should initiate the color
+        public void Init()
+        {
+
+        }
 
         void Update()
         {

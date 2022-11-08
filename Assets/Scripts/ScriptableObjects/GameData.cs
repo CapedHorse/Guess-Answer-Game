@@ -14,8 +14,9 @@ namespace PikoruaTest
         [Tooltip("Time per round (in seconds)")]
         public float timePerRound;
         public int roundPerGame;
+        public AIData.AIDifficulty AIDifficulty;
 
-        public Color playerColor, enemyColor;
+        //public Color playerColor, enemyColor;
 
         public List<Respondent> respondentPrefabs;
 

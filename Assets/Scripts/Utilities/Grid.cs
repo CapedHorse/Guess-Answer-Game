@@ -26,6 +26,7 @@ namespace PikoruaTest
 
         public void Init()
         {
+            var count = GameManager.instance.gameData.respondenCountInDisplay;
             if (multipleGround)
             {
 

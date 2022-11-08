@@ -24,7 +24,7 @@ namespace PikoruaTest
         {
             if (_participant != null)
             {
-                answerImage.color = _participant.playerColor;
+                answerImage.color = _participant.participantColor;
                 answerText.color = Color.white;
                 answerPollText.color = Color.white;
             }
