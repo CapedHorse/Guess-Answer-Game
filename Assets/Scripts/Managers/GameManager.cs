@@ -20,6 +20,9 @@ namespace PikoruaTest
         public float currentPlayTime;
         public int currentRound;
         public bool gameOver;
+
+        public List<QuestionData> questions;
+        public QuestionData CurrentQuestion => questions[currentRound];
         private void Awake()
         {
             if (instance == null)
@@ -38,7 +41,7 @@ namespace PikoruaTest
         {            
             uIManager = PlayUIManager.instance;
 
-            
+            CountDown();
 
 
         }
@@ -50,7 +53,12 @@ namespace PikoruaTest
             {
                 if (currentPlayTime < gameData.timePerRound)
                 {
-
+                    currentPlayTime += Time.deltaTime;
+                    PlayUIManager.instance.UpdateTimerUI();
+                }
+                else
+                {
+                    RoundOver();
                 }
             }
         }
@@ -62,7 +70,9 @@ namespace PikoruaTest
 
         void StartGame()
         {
-
+            currentPlayTime = 0;
+            currentRound = 0;
+            isPlaying = true;
         }
 
         
@@ -73,7 +83,7 @@ namespace PikoruaTest
             currentRound++;
             if (currentRound < gameData.roundPerGame)
             {
-
+                //Show result UI then Continue
             }
             else
             {

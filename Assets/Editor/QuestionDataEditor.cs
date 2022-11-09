@@ -14,8 +14,8 @@ namespace PikoruaTest
 
             var questionDataSO = (QuestionData)target;
             
-            var generalSettings = EditorGUIUtility.Load("Assets/Resources/GeneralSettings.asset") as GameData;
-            var maxRespondent = generalSettings.respondenCount;
+            var gameData = EditorGUIUtility.Load("Assets/Resources/GameData.asset") as GameData;
+            var maxRespondent = gameData.respondenCount;
 
             //Checking total popularity gained, also set each answer's id
             int totalPopularity = 0;
