@@ -30,15 +30,17 @@ namespace PikoruaTest
         /// <param name="_answer"></param>
         /// <param name="_answerId"></param>
         /// <returns></returns>
-        public bool CheckIfAnswerCorrect(string _answer, out int _answerId )
+        public bool CheckIfAnswerCorrect(string _answer, out AnswerData _answerData )
         {
 
             //Simple without regex
+            //ADA KESALAHAN, HARUSNYA NGECEK TIAP LOOP DULU
             foreach (var answer in answers)
             {
                 if (_answer.Equals(answer.answer))
                 {
-                    _answerId = answer.answerId;
+                    Debug.Log("Answer is " + _answer + " and is " + answer.answer+" So Correct ");
+                    _answerData = answer;
                     return true;
                 }
                 else
@@ -47,21 +49,24 @@ namespace PikoruaTest
                     {
                         if (similar.Equals(_answer))
                         {
-                            _answerId = answer.answerId;
+                            Debug.Log("Answer is " + _answer + " and is " + answer.answer + " So Correct ");
+                            _answerData = answer;
                             return true;
                         }
                        
                     }
-                    _answerId = 0;
-                    return false;
 
+                    continue;
                 }
+
+                
             }
 
-            //with regex
-
-            _answerId = 0;
+            Debug.Log("Wrong");
+            _answerData = null;
             return false;
+
+            //with regex
         }
     }
 }

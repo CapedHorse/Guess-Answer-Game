@@ -37,11 +37,22 @@ namespace PikoruaTest
 
         [Header("Result")]
         public GameObject resultUI;
-        public TextMeshProUGUI playerTotalPointText, enemyTotalPointText, rewardGained;
-        public Button continueBtn, doubleRewardBtn;
+        public GameObject rewardPanel;
+        public ScoreDisplayUI scoreDisplayUIPrefab;
+        public RectTransform scoreTableParent;
+        public List<ScoreDisplayUI> scoreDisplays;
+        public TextMeshProUGUI playerTotalPointText, enemyTotalPointText, playerRewardText, rewardGainedText;
+        public Button continueButton, doubleRewardButton, noThanksButton;
+
         [Header("Countdown")]
         public GameObject countDownUI;
         public TextMeshProUGUI countDownText;
+
+        [Header("Game Over")]
+        public GameObject gameOverUI;
+        public TextMeshProUGUI finalStatusText, finalScoreText;
+        public Button restartButton;
+
 
         public UnityAction<Participant, string> OnAnswering;
 
@@ -83,18 +94,38 @@ namespace PikoruaTest
         /// </summary>
         void Init()
         {
+            //initiate buttons
             answerButton.onClick.AddListener(() =>
             {
                 gameManager.player.Answer(answerInputField.text);
                 answerInputField.text = "";
             });
+            continueButton.onClick.AddListener(() =>
+            {
+                //proceed next round
+            });
+            noThanksButton.onClick.AddListener(() =>
+            {
+                //close the reward gain UI
+            });
+            doubleRewardButton.onClick.AddListener(() =>
+            {
+                AdsManager.instance.ShowRewarded();
+            });
+            restartButton.onClick.AddListener(() =>
+            {
+                gameManager.RestartGame();
+            });
 
-            InitQuestion();
+            UpdateParticipant(Participant.ControlType.Player, 0);
+            UpdateParticipant(Participant.ControlType.Enemy, 0);
+
         }
 
         public IEnumerator CountingDownUI(UnityAction _afterCountingDown)
         {
             countDownUI.SetActive(true);
+            playUI.SetActive(false);
             countDownText.text = "3";
             yield return new WaitForSeconds(1);
             countDownText.text = "2";
@@ -105,6 +136,7 @@ namespace PikoruaTest
             yield return new WaitForSeconds(1);
             countDownUI.SetActive(false);
             playUI.SetActive(true);
+            InitQuestion();
             _afterCountingDown?.Invoke();
         }
 
@@ -150,6 +182,23 @@ namespace PikoruaTest
         {
             var percentage = Mathf.Clamp((gameManager.gameData.timePerRound-gameManager.currentPlayTime) / gameManager.gameData.timePerRound * 1, 0, 1);
             timerIndicator.fillAmount = Mathf.Clamp(percentage,0, 1);
+        }
+
+        public void UpdateParticipant(Participant.ControlType type, int value)
+        {
+            switch (type)
+            {
+                case Participant.ControlType.Player:
+                    playerScoreFill.fillAmount = Mathf.Clamp(value / 100 * 1, 0, 1);
+                    playerScoreText.text = value.ToString();
+                    break;
+                case Participant.ControlType.Enemy:
+                    enemyScoreFill.fillAmount = Mathf.Clamp(value / 100 * 1, 0, 1);
+                    enemyScoreText.text = value.ToString();
+                    break;
+                default:
+                    break;
+            }
         }
         
         /// <summary>

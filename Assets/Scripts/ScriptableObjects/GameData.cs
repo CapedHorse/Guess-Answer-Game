@@ -13,6 +13,7 @@ namespace PikoruaTest
         public int respondenCountInDisplay;
         [Tooltip("Time per round (in seconds)")]
         public float timePerRound;
+        [Range(2,5)]public float scoreMultiplier;
         public int roundPerGame;
         public AIData.AIDifficulty AIDifficulty;
 

@@ -15,7 +15,9 @@ namespace PikoruaTest
         public Color participantColor;
         public Grid respondentArea;
         public GameObject correctAnswerSign, wrongAnswerSign;
-        public List<int> answeredIds;
+        public List<QuestionData.AnswerData> answeredDatas;
+        
+        public int scoreGain;
 
         void Start()
         {
@@ -45,10 +47,10 @@ namespace PikoruaTest
 
         public void Answer(string _answer)
         {
-            int answerId = 0;
-            if (GameManager.instance.CurrentQuestion.CheckIfAnswerCorrect(_answer, out answerId))
+            QuestionData.AnswerData _answerData = null;
+            if (GameManager.instance.CurrentQuestion.CheckIfAnswerCorrect(_answer, out _answerData))
             {
-                if (answeredIds.Contains(answerId)) //already answered this
+                if (answeredDatas.Contains(_answerData)) //already answered this
                 {
                     PlayUIManager.instance.OnAnswering(this, "Already Given!");
                     WhenAnswering(AnswerType.Wrong);
@@ -56,7 +58,10 @@ namespace PikoruaTest
                 else
                 {
                     PlayUIManager.instance.OnAnswering(this, _answer);
-                    answeredIds.Add(answerId);
+                    var pollInDisplay = Mathf.RoundToInt(Mathf.Clamp((float)_answerData.poll / GameManager.instance.gameData.respondenCount, 0, GameManager.instance.gameData.respondenCount) * GameManager.instance.gameData.respondenCountInDisplay);
+                    Debug.Log(pollInDisplay + " " + _answerData.poll +" "+ GameManager.instance.gameData.respondenCount+" " + GameManager.instance.gameData.respondenCountInDisplay);
+                    GameManager.instance.MoveRespondents(this, pollInDisplay);
+                    answeredDatas.Add(_answerData);
                     WhenAnswering(AnswerType.Correct);
                 }
             }
@@ -89,7 +94,7 @@ namespace PikoruaTest
 
         public void Reset()
         {
-            answeredIds.Clear();
+            answeredDatas.Clear();
         }
 
 
