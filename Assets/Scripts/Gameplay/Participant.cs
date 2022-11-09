@@ -58,6 +58,7 @@ namespace PikoruaTest
                 else
                 {
                     PlayUIManager.instance.OnAnswering(this, _answer);
+                    PlayUIManager.instance.UpdateParticipantUI(type, _answerData.poll);
                     var pollInDisplay = Mathf.RoundToInt(Mathf.Clamp((float)_answerData.poll / GameManager.instance.gameData.respondenCount, 0, GameManager.instance.gameData.respondenCount) * GameManager.instance.gameData.respondenCountInDisplay);
                     Debug.Log(pollInDisplay + " " + _answerData.poll +" "+ GameManager.instance.gameData.respondenCount+" " + GameManager.instance.gameData.respondenCountInDisplay);
                     GameManager.instance.MoveRespondents(this, pollInDisplay);

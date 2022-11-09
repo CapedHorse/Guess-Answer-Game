@@ -17,31 +17,31 @@ MonoBehaviour:
   answers:
   - answer: Cell phone
     answerId: 0
-    popularity: 29
+    poll: 29
     similarAnswers:
     - phone
     - cellphone
   - answer: Keys
     answerId: 1
-    popularity: 28
+    poll: 28
     similarAnswers: []
   - answer: Wallet
     answerId: 2
-    popularity: 16
+    poll: 16
     similarAnswers:
     - Pocket
   - answer: Money
     answerId: 3
-    popularity: 12
+    poll: 12
     similarAnswers:
     - Cash
   - answer: Clothes
     answerId: 4
-    popularity: 8
+    poll: 8
     similarAnswers:
     - Outfit
   - answer: Bag
     answerId: 5
-    popularity: 7
+    poll: 7
     similarAnswers: []
   respondentLeftForPopularity: 0

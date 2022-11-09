@@ -17,30 +17,30 @@ MonoBehaviour:
   answers:
   - answer: Swimming pool
     answerId: 0
-    popularity: 28
+    poll: 28
     similarAnswers:
     - Pool
   - answer: Ocean
     answerId: 1
-    popularity: 27
+    poll: 27
     similarAnswers:
     - Sea
     - Beach
   - answer: Lake
     answerId: 2
-    popularity: 20
+    poll: 20
     similarAnswers: []
   - answer: River
     answerId: 3
-    popularity: 9
+    poll: 9
     similarAnswers: []
   - answer: Pond
     answerId: 4
-    popularity: 8
+    poll: 8
     similarAnswers: []
   - answer: Bathtub
     answerId: 5
-    popularity: 8
+    poll: 8
     similarAnswers:
     - Hot tub
   respondentLeftForPopularity: 0

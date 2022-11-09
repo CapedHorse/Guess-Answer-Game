@@ -57,9 +57,8 @@ namespace PikoruaTest
                 {
                     var gridWidth = groundCollider.bounds.size.x;
                     var gridHeight = groundCollider.bounds.size.z;
-                    var gridRow = new GridRow();
                     //gridRow.rowId = i;
-                    gridRow.gridPoints = new List<GridPoint>();
+                    
                     for (int j = 0; j < pointPerRow; j++)
                     {
                         var pointWidth = (gridWidth / pointPerRow);
@@ -74,7 +73,7 @@ namespace PikoruaTest
 
                         //gridPoint.pointid = j;
                         gridPoint.position = pointPos;
-                        gridRow.gridPoints.Add(gridPoint);
+                        gridPoints.Add(gridPoint);
                     }
                     //gridRows.Add(gridRow);
                 }
@@ -86,7 +85,6 @@ namespace PikoruaTest
         [System.Serializable]
         public class GridRow
         {
-            
             public List<GridPoint> gridPoints;
         }
 

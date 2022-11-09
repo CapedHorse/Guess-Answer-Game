@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 2_AIData
   m_EditorClassIdentifier: 
   difficulty: 1
-  answeringIntervalFromTime: 36
-  chanceToAnswerTheHighestPoll: 34.6
+  answeringIntervalFromTime: 38.2
+  chanceToAnswerTheHighestPoll: 44

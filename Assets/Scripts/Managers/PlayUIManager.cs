@@ -117,8 +117,8 @@ namespace PikoruaTest
                 gameManager.RestartGame();
             });
 
-            UpdateParticipant(Participant.ControlType.Player, 0);
-            UpdateParticipant(Participant.ControlType.Enemy, 0);
+            UpdateParticipantUI(Participant.ControlType.Player, 0);
+            UpdateParticipantUI(Participant.ControlType.Enemy, 0);
 
         }
 
@@ -161,7 +161,7 @@ namespace PikoruaTest
             }
         }
 
-        public void ParticipantAnswered(Participant _participant, string _answer)
+        public void ParticipantAnswered(Participant _participant, string _answer)//no need to use unity event
         {
             switch (_participant.type)
             {
@@ -184,16 +184,16 @@ namespace PikoruaTest
             timerIndicator.fillAmount = Mathf.Clamp(percentage,0, 1);
         }
 
-        public void UpdateParticipant(Participant.ControlType type, int value)
+        public void UpdateParticipantUI(Participant.ControlType type, int value)
         {
             switch (type)
             {
                 case Participant.ControlType.Player:
-                    playerScoreFill.fillAmount = Mathf.Clamp(value / 100 * 1, 0, 1);
+                    playerScoreFill.fillAmount = Mathf.Clamp((float) value / 100 * 1, 0, 1);
                     playerScoreText.text = value.ToString();
                     break;
                 case Participant.ControlType.Enemy:
-                    enemyScoreFill.fillAmount = Mathf.Clamp(value / 100 * 1, 0, 1);
+                    enemyScoreFill.fillAmount = Mathf.Clamp((float)value / 100 * 1, 0, 1);
                     enemyScoreText.text = value.ToString();
                     break;
                 default:
