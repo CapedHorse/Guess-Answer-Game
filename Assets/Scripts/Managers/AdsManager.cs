@@ -10,7 +10,7 @@ namespace PikoruaTest
     public class AdsManager : MonoBehaviour
     {
         public static AdsManager instance;
-        public InterstitialAd interstitialAd;
+        public InterstitialAd interstitial;
         public RewardedAd rewardedAd;
 
         [Label("The ad ID are only test ID")]
@@ -20,7 +20,6 @@ namespace PikoruaTest
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
             }
             else
             {
@@ -29,32 +28,48 @@ namespace PikoruaTest
             }
         }
 
-        // Start is called before the first frame update
+        
         void Start()
         {
-
+            //request rewarded
+            RequestIntersitial();
+            RequestRewarded();
         }
 
 
         #region Intersitial Ad
         public void RequestIntersitial()
         {
-            interstitialAd = new InterstitialAd(intersitialAdId);
-            interstitialAd.OnAdLoaded += HandleInterstitialLoaded;
-            interstitialAd.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
-            interstitialAd.OnAdOpening += HandleInterstitialOpened;
-            interstitialAd.OnAdClosed += HandleInterstitialClosed;
+            interstitial = new InterstitialAd(intersitialAdId);
+            interstitial.OnAdLoaded += HandleInterstitialLoaded;
+            interstitial.OnAdFailedToLoad += HandleInterstitialFailedToLoad;
+            interstitial.OnAdOpening += HandleInterstitialOpened;
+            interstitial.OnAdClosed += HandleInterstitialClosed;
 
             AdRequest adRequest = new AdRequest.Builder().Build();
-            interstitialAd.LoadAd(adRequest);
+            interstitial.LoadAd(adRequest);
         }
 
+        /// <summary>
+        /// Showing interstitial ad, invoked after round is over, if null or failed to load, automatically show answer UI
+        /// </summary>
         public void ShowInterstitial()
         {
-            if (interstitialAd.IsLoaded())
+            if (interstitial == null)
             {
-                interstitialAd.Show();
+                PlayUIManager.instance.ShowAnswersUI();
+                return;
             }
+                
+
+            if (!interstitial.IsLoaded())
+            {
+                PlayUIManager.instance.ShowAnswersUI();
+                return;
+            }
+
+            interstitial.Show();
+            
         }
 
         #region Interstitial callback handlers
@@ -66,7 +81,8 @@ namespace PikoruaTest
 
         public void HandleInterstitialFailedToLoad(object sender, AdFailedToLoadEventArgs args)
         {
-
+            Debug.Log("HandleInterstitialFailedToLoad event received");
+            AdsManager.instance.RequestIntersitial();
         }
 
         public void HandleInterstitialOpened(object sender, EventArgs args)
@@ -74,10 +90,17 @@ namespace PikoruaTest
             Debug.Log("HandleInterstitialOpened event received");
         }
 
+        /// <summary>
+        /// When interstitial is sucessfully loaded and shown, when closing the ad, show answer UI
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void HandleInterstitialClosed(object sender, EventArgs args)
         {
             Debug.Log("HandleInterstitialClosed event received");
-            RequestIntersitial();
+            PlayUIManager.instance.ShowAnswersUI();
+            interstitial.Destroy();
+            AdsManager.instance.RequestIntersitial();
         }
 
         #endregion
@@ -124,6 +147,8 @@ namespace PikoruaTest
         public void CloseRewarded()
         {
             rewardedAd.Destroy();
+            Time.timeScale = 1f;
+            RequestRewarded();
         }
 
         #region RewardedAd callback handlers
@@ -131,12 +156,14 @@ namespace PikoruaTest
         public void HandleRewardedAdLoaded(object sender, EventArgs args)
         {
             Debug.Log("HandleRewardedAdLoaded event received");
+            
         }
 
         public void HandleRewardedAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
         {
             Debug.Log(
                 "HandleRewardedAdFailedToLoad event received with message: " + args.LoadAdError.GetMessage());
+            AdsManager.instance.RequestRewarded();
         }
 
         public void HandleRewardedAdOpening(object sender, EventArgs args)
@@ -148,6 +175,8 @@ namespace PikoruaTest
         public void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs args)
         {
             Debug.Log("HandleRewardedAdFailedToShow event received with message: " + args.AdError.GetMessage());
+            AdsManager.instance.rewardClosed = true;
+            AdsManager.instance.RequestRewarded();
         }
 
         public void HandleRewardedAdClosed(object sender, EventArgs args)
@@ -179,6 +208,9 @@ namespace PikoruaTest
 
         #endregion
 
+        /// <summary>
+        /// For rewarded ad added this handling because sometimes there are issue in thread dispatcher, especially in iOS build later.
+        /// </summary>
         [Header("For rewarded ad callbacks")]
         public bool getReward = false;
         public bool rewardOpen = false;
@@ -189,16 +221,20 @@ namespace PikoruaTest
             {
                 getReward = false;
                 //invoke when you got a reward
+                GameManager.instance.DoubledReward();
+                CloseRewarded();
             }
             if (rewardOpen)
             {
                 rewardOpen = false;
                 //invoke when reward opened
+                Time.timeScale = 0f;
             }
             if (rewardClosed)
             {
                 rewardClosed = false;
                 //invoke when reward closed
+                CloseRewarded();
             }
         }
     }

@@ -39,7 +39,7 @@ namespace PikoruaTest
         public void SetStop()
         {
             status = Status.Idle;
-            respondentNavAgent.isStopped = true;
+            //respondentNavAgent.isStopped = true;
             respondentNavAgent.enabled = false;            
             destination = initPoint.position;
             respondentAnim.SetBool("Run", false);
@@ -49,10 +49,16 @@ namespace PikoruaTest
         {
             status = Status.Running;
             respondentNavAgent.enabled = true;
-            respondentNavAgent.isStopped = false;
+            //respondentNavAgent.isStopped = false;
             respondentAnim.SetBool("Run", true);
             destination = _destination;
             respondentNavAgent.SetDestination(destination);
+        }
+
+        public void Reset()
+        {
+            transform.position = initPoint.position;
+            SetStop();
         }
     }
 }

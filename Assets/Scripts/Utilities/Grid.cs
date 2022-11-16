@@ -50,7 +50,7 @@ namespace PikoruaTest
             }
             else
             {
-                //WIP
+                
                 var rowCount = Mathf.RoundToInt(groundCollider.bounds.size.z);
                 var pointPerRow = count / rowCount;
                 for (int i = 0; i < rowCount; i++)

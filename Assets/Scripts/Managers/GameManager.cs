@@ -20,11 +20,12 @@ namespace PikoruaTest
         [Header("Status")]
         public bool isPlaying;
         public float currentPlayTime;
-        public int currentRound;
+        public int currentRound = 0;
         public int rewardGain;
         public bool gameOver;
 
         public List<QuestionData> questions;
+        public List<QuestionData.AnswerData> answered;
         public QuestionData CurrentQuestion => questions[currentRound];
         private void Awake()
         {
@@ -57,7 +58,7 @@ namespace PikoruaTest
                 if (currentPlayTime < gameData.timePerRound)
                 {
                     currentPlayTime += Time.deltaTime;
-                    PlayUIManager.instance.UpdateTimerUI();
+                    PlayUIManager.instance.UpdateTimerUI(currentPlayTime);
                 }
                 else
                 {
@@ -87,6 +88,7 @@ namespace PikoruaTest
         void InitQuestions()
         {
             questions = new List<QuestionData>();
+            answered = new List<QuestionData.AnswerData>();
             for (int i = 0; i < gameData.roundPerGame; i++)
             {
                 var availableQuestions = gameData.questionDatas.FindAll(x => !questions.Contains(x));
@@ -102,25 +104,20 @@ namespace PikoruaTest
         void StartGame()
         {
             currentPlayTime = 0;
-            currentRound = 0;
+            
             isPlaying = true;
-        }
+        }        
 
-        
-
+        /// <summary>
+        /// while a round is over, answer ui
+        /// </summary>
         void RoundOver()
         {
             isPlaying = false;
-            currentRound++;
-            if (currentRound < gameData.roundPerGame)
-            {
-                //Show result UI then Continue
-            }
-            else
-            {
-                GameOver();
-            }
+            PlayUIManager.instance.NotifyRoundOver();        
+
         }
+
 
         public void MoveRespondents(Participant _participant, int _amount)
         {
@@ -147,18 +144,18 @@ namespace PikoruaTest
             }
         }
 
-        void ResetRound()
+        public void ResetParticipantsRespondent()
         {
             foreach (var item in playerRespondents)
             {
-                item.transform.position = item.initPoint.position;
+                item.Reset();
                 respondents.Add(item);
             }
             playerRespondents.Clear();
 
             foreach (var item in enemyRespondents)
             {
-                item.transform.position = item.initPoint.position;
+                item.Reset();
                 respondents.Add(item);
             }
             enemyRespondents.Clear();
@@ -172,18 +169,50 @@ namespace PikoruaTest
             {
                 item.occupied = false;
             }
+
+            answered.Clear();
+
+            player.Reset();
+            enemy.Reset();
+        }
+
+        public void DoubledReward()
+        {
+            player.doubled = true;
+            PlayUIManager.instance.DoublingRewardUI();
+            
         }
 
         void GameOver()
         {
             gameOver = true;
 
+            PlayUIManager.instance.ShowFinalResultUI();
+        }
 
+        public void ProceedNextRound()
+        {
+            currentRound++;
+            if (currentRound < gameData.roundPerGame)
+            {
+                ResetParticipantsRespondent();
+                //StartCountdown again but show score multiplier Ui
+                CountDown();
+            }
+            else
+            {
+                GameOver();
+            }
         }
 
         public void RestartGame()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("PlayScene");
+        }
+
+        public void BackToMenu()
+        {
+            SceneManager.LoadScene("MenuScene");
         }
     }
 }

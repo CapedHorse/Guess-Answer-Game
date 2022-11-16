@@ -16,10 +16,13 @@ namespace PikoruaTest
         {
             answerText.text = _answerData.answer;
             answerPollText.text = _answerData.poll.ToString();
-
-           
+            Display();
         }
 
+        /// <summary>
+        /// Higlighting chosen answer based on their participant color
+        /// </summary>
+        /// <param name="_participant"></param>
         public void Display(Participant _participant = null)
         {
             if (_participant != null)
