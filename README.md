@@ -1,2 +1,2 @@
-# programming-test-pikorua
- Recreating Guess The Answer as a test for Game Programmer in Pikorua Studio
+# Guess Answer Game
+Quiz game about answering a question based on poll popularity.
